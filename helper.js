@@ -30,7 +30,7 @@ const sendMail = async (name, email, subject, message) => {
     const info = await transporter.sendMail({
       from: email, // Sender address
       to: RECEIVER_EMAIL, // List of receivers
-      subject: `Portfolio Mail Received - ${name}`, // Subject line
+      subject: `${name} Messaged - Portfolio`, // Subject line
       //   text: message, // Plain text body
       // Alternatively, you can send an HTML body:
       html: template,
