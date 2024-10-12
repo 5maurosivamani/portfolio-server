@@ -1,9 +1,10 @@
 const nodemailer = require("nodemailer");
 const fs = require("fs");
+const path = require('path')
 const { SENDER_EMAIL, RECEIVER_EMAIL, APP_PASSWORD } = process.env;
 
 const sendMail = async (name, email, subject, message) => {
-  let template = await fs.promises.readFile("./template/email.html", "utf8");
+  let template = await fs.promises.readFile(path.join(__dirname, "template/email.html"), "utf8");
 
   template = template.replace(/&lt/g, "<");
   template = template.replace(/&gt/g, ">");
