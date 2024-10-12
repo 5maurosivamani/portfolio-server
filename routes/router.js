@@ -43,6 +43,7 @@ router.post("/contact", async (req, res, next) => {
       .status(201)
       .json({ success: true, message: "Data inserted", id: results.insertId });
   } catch (err) {
+    // console.log("err", err)
     next(err);
   }
 });
