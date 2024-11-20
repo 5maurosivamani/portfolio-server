@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const pool = require("../db"); // Import the MySQL connection
+// const pool = require("../db"); // Import the MySQL connection
 const portfolioFormSchema = require("../validation/portfolioFormSchema");
 const { ValidationError } = require("../errors");
 const sendMail = require("../helper");
@@ -21,19 +21,19 @@ router.post("/contact", async (req, res, next) => {
   try {
     const { name, email, subject, message } = req.body; // Adjust fields as necessary
 
-    const connection = await pool.getConnection();
+    // const connection = await pool.getConnection();
 
-    const query =
-      "INSERT INTO contact_message (name, email, subject, message) VALUES (?, ?, ?, ?)";
+    // const query =
+    //   "INSERT INTO contact_message (name, email, subject, message) VALUES (?, ?, ?, ?)";
 
-    const [results] = await pool.execute(query, [
-      name,
-      email,
-      subject,
-      message,
-    ]);
+    // const [results] = await pool.execute(query, [
+    //   name,
+    //   email,
+    //   subject,
+    //   message,
+    // ]);
 
-    connection.release(); // Close the connection
+    // connection.release(); // Close the connection
 
     const { success, error } = await sendMail(name, email, subject, message);
     // return;
